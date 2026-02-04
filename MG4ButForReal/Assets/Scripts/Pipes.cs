@@ -13,20 +13,12 @@ public class Pipes : MonoBehaviour
         _pipeTransform.Translate(Vector2.left*_speed*Time.deltaTime);
         }
     }
-    void OnTriggerExit2D(Collider2D collision)
-    {
-        if(gameObject.tag=="Score")
-        {
-        //get point
-        Debug.Log("got point");
-        }
-    }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(gameObject.tag=="Pipes")
+        if(collision.gameObject.tag=="Deleter")
         {
-        //stop game event
-        Debug.Log("dead");
+        Destroy(gameObject);
         } 
     }
 }
