@@ -8,17 +8,13 @@ public class Pipes : MonoBehaviour
     [SerializeField] private Transform _pipeTransform;
     void Update()
     {
-        if(gameObject.tag=="Score")
-        {
         _pipeTransform.Translate(Vector2.left*_speed*Time.deltaTime);
-        }
     }
-
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag=="Deleter")
+        if(collision.gameObject.CompareTag("Deleter"))
         {
-        Destroy(gameObject);
-        } 
+            Destroy(gameObject);
+        }
     }
 }

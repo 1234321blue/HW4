@@ -13,7 +13,7 @@ public class Birb : MonoBehaviour
     public event Scored point;
     public delegate void End();
     public event End dead;
-    private int points;
+    public int points;
     void Start()
     {
         
@@ -28,14 +28,14 @@ public class Birb : MonoBehaviour
             flapped?.Invoke();
         }
     }
-
     void OnTriggerExit2D (Collider2D collision)
     {
         points++;
-        Debug.Log("ok");
+        point?.Invoke();
     }
-    void OnCollsionEnter2D(Collision2D collsion)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("game end");
+        dead?.Invoke();
+        gameObject.SetActive(false);
     }
 }

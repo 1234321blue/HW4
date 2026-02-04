@@ -12,6 +12,7 @@ public class PipeSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Locator.Instance.birb.dead+=StopSpawn;
         random = Random.Range(-2,3);
     }
 
@@ -19,10 +20,10 @@ public class PipeSpawner : MonoBehaviour
     void Update()
     {
         timer+=Time.deltaTime;
-        SpawnCoin();
+        SpawnPipes();
         
     }
-    void SpawnCoin()
+    void SpawnPipes()
     {
         Vector3 _spawnposition = new Vector3(5,random,0);
         if(timer>=_spawnTime)
@@ -31,5 +32,9 @@ public class PipeSpawner : MonoBehaviour
             timer=0;
             random = Random.Range(-2,3);
         }
+    }
+    void StopSpawn()
+    {
+        enabled = false;
     }
 }
