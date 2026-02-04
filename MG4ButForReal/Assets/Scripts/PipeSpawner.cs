@@ -14,6 +14,9 @@ public class PipeSpawner : MonoBehaviour
     {
         Locator.Instance.birb.dead+=StopSpawn;
         random = Random.Range(-2,3);
+        Vector3 _spawnposition = new Vector3(10,random,0);
+        Instantiate(_pipe,_spawnposition,Quaternion.identity);
+        random = Random.Range(-2,3);
     }
 
     // Update is called once per frame
@@ -25,7 +28,7 @@ public class PipeSpawner : MonoBehaviour
     }
     void SpawnPipes()
     {
-        Vector3 _spawnposition = new Vector3(5,random,0);
+        Vector3 _spawnposition = new Vector3(10,random,0);
         if(timer>=_spawnTime)
         {
             Instantiate(_pipe,_spawnposition,Quaternion.identity);
